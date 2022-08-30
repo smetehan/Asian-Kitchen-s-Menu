@@ -75,28 +75,19 @@ const menu = [
 
 const buttonSection = document.querySelector(".btn-container");
 const menuSection = document.querySelector(".section-center");
+//buton yapımı
 
-//Button Creation
 const createButtons = () => {
   let allButtons = `
-    <button id="all" class="btn btn-outline-dark btn-item" type="button">
-      All
-    </button>
-    <button id="korea" class="btn btn-outline-dark btn-item" type="button">
-      Korea
-    </button>
-    <button id="japan" class="btn btn-outline-dark btn-item" type="button">
-      Japan
-    </button>
-    <button id="china" class="btn btn-outline-dark btn-item" type="button">
-      China
-    </button>
-  `;
+<button id="all"  type="button" class="btn btn-secondary">All</button>
+<button id="korea" type="button" class="btn btn-secondary">Korea</button>
+<button id="japan" type="button" class="btn btn-secondary">Japan</button>
+<button id="china" type="button" class="btn btn-secondary">China</button>`;
   buttonSection.innerHTML = allButtons;
 };
 createButtons();
 
-//Create Foods
+//yemek yapımı
 const createFoods = (food) => {
   let html = `
     <div class="menu-items col-lg-6 col-sm-12">
@@ -109,26 +100,26 @@ const createFoods = (food) => {
         <div class="menu-text">${food.desc}</div>
       </div>
     </div>  
-  `;
+    `;
   return html;
 };
 
-//List All Foods
+// all yemek listesi
 const listAllFoods = () => {
   let allFoods = "";
-
   menu.map((item) => {
     allFoods += createFoods(item);
   });
   menuSection.innerHTML = allFoods;
 };
-//Show All Foods on Homepage
+
+// Anasayfa da all foods gösterme
+
 document.addEventListener("DOMContentLoaded", listAllFoods);
 
-//List Korea Foods
+// kore yemekleri listesi
 const listKoreaFoods = () => {
   let koreaFoods = "";
-
   menu.map((item) => {
     if (item.category === "Korea") {
       koreaFoods += createFoods(item);
@@ -136,12 +127,11 @@ const listKoreaFoods = () => {
   });
   menuSection.innerHTML = koreaFoods;
 };
-document.querySelector("#korea").addEventListener("click", listKoreaFoods);
+document.querySelector(`#korea`).addEventListener("click", listKoreaFoods);
 
-//List Japan Foods
+//japon yemekleri listesi
 const listJapanFoods = () => {
   let japanFoods = "";
-
   menu.map((item) => {
     if (item.category === "Japan") {
       japanFoods += createFoods(item);
@@ -149,12 +139,12 @@ const listJapanFoods = () => {
   });
   menuSection.innerHTML = japanFoods;
 };
-document.querySelector("#japan").addEventListener("click", listJapanFoods);
+document.querySelector(`#japan`).addEventListener("click", listJapanFoods);
 
-//List China Foods
+// China yemekleri listesi
+
 const listChinaFoods = () => {
   let chinaFoods = "";
-
   menu.map((item) => {
     if (item.category === "China") {
       chinaFoods += createFoods(item);
@@ -162,7 +152,9 @@ const listChinaFoods = () => {
   });
   menuSection.innerHTML = chinaFoods;
 };
-document.querySelector("#china").addEventListener("click", listChinaFoods);
+document.querySelector(`#china`).addEventListener("click", listChinaFoods);
 
-//List All Foods When All Button is Clicked
-document.querySelector("#all").addEventListener("click", listAllFoods);
+//tüm yemeklerin listesi buton tıklaması
+
+document.querySelector(`#all`).addEventListener("click", listAllFoods);
+
